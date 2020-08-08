@@ -18,8 +18,14 @@ class GlobalErrorHandler {
 
   @ExceptionHandler(ValidationException::class)
   @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-  fun handleValidationException(e: ResourceAlreadyExistException): ErrorResponse {
+  fun handleValidationException(e: ValidationException): ErrorResponse {
     return ErrorResponse("Wrong entity", stackTrace(e))
+  }
+
+  @ExceptionHandler(ResourceNotFoundException::class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  fun handleResourceNotFoundException(e: ResourceNotFoundException): ErrorResponse {
+    return ErrorResponse("Resource not found", stackTrace(e))
   }
 
   private fun stackTrace(e: Throwable): String {
@@ -32,4 +38,5 @@ class GlobalErrorHandler {
 }
 
 class ResourceAlreadyExistException(resourceId: String) : RuntimeException("Resource with id $resourceId already exist")
+class ResourceNotFoundException(resourceId: String) : RuntimeException("Resource not found for id $resourceId")
 class ValidationException(message: String) : RuntimeException(message)

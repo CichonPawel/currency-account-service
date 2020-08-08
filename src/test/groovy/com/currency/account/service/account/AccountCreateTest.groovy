@@ -1,5 +1,6 @@
 package com.currency.account.service.account
 
+import com.currency.account.service.DynamicClock
 import com.currency.account.service.ResourceAlreadyExistException
 import com.currency.account.service.ValidationException
 import spock.lang.Specification
@@ -7,7 +8,7 @@ import spock.lang.Unroll
 
 import java.time.LocalDateTime
 
-class AccountFacadeTest extends Specification {
+class AccountCreateTest extends Specification {
 
     def FIRST_NAME = "Rafał"
     def LAST_NAME = "Kowalski"

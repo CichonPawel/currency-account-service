@@ -9,7 +9,9 @@ class AccountModule {
 
   @Bean
   fun accountFacade(accountRepository: AccountRepository, clock: Clock): AccountFacade {
-    return AccountFacade(AccountCreator(accountRepository, LegalAgeValidator(clock)))
+    val accountCreator = AccountCreator(accountRepository, LegalAgeValidator(clock))
+    val accountFinder = AccountFinder(accountRepository)
+    return AccountFacade(accountCreator, accountFinder)
   }
 
 }

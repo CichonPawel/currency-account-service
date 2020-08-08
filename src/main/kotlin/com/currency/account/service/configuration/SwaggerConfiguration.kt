@@ -19,7 +19,7 @@ private class SwaggerConfiguration(val buildProperties: BuildProperties) {
     @Bean
     fun api() = Docket(SWAGGER_2)
             .select()
-            .apis(basePackage("com.empik.service.warehousereturns"))
+            .apis(basePackage("com.currency.account.service"))
             .build()
             .apiInfo(apiInfo())!!
 

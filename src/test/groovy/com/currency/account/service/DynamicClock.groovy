@@ -1,4 +1,4 @@
-package com.currency.account.service.account
+package com.currency.account.service
 
 import java.time.*
 

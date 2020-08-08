@@ -8,7 +8,9 @@ data class Account(
         val lastName: String,
         val pesel: Pesel,
         val subAccounts: Set<SubAccount>
-)
+){
+  fun toDto() = AccountDto(firstName, lastName, pesel.value, subAccounts)
+}
 
 data class SubAccount(
         val currency: Currency,
@@ -18,6 +20,13 @@ data class SubAccount(
 enum class Currency {
   PLN, USD
 }
+
+data class AccountDto(
+        val firstName: String,
+        val lastName: String,
+        val pesel: String,
+        val subAccounts: Set<SubAccount>
+)
 
 data class Pesel(
         val value: String

@@ -12,7 +12,7 @@ class AccountCreator(private val accountRepository: AccountRepository,
 
     accountRepository.getAccount(command.pesel)
             ?.let { throw ResourceAlreadyExistException(command.pesel.value) }
-    return accountRepository.createAccount(command)
+    return accountRepository.createAccount(command.toAccount())
   }
 
 }
