@@ -1,13 +1,23 @@
 package com.currency.account.service.account
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties
+import java.math.BigDecimal
 import java.time.LocalDate
 
 data class Account(
-        private val firstName: String,
-        private val lastName: String,
-        private val pesel: Pesel
+        val firstName: String,
+        val lastName: String,
+        val pesel: Pesel,
+        val subAccounts: Set<SubAccount>
 )
+
+data class SubAccount(
+        val currency: Currency,
+        val balance: BigDecimal
+)
+
+enum class Currency {
+  PLN, USD
+}
 
 data class Pesel(
         val value: String

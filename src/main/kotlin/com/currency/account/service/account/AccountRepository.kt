@@ -12,7 +12,7 @@ class InMemoryAccountRepository : AccountRepository {
   private val accounts = ConcurrentHashMap<Pesel, Account>()
 
   override fun createAccount(command: CreateAccountCommand): Account {
-    val account = Account(command.firstName, command.lastName, command.pesel)
+    val account = command.toAccount()
     accounts[command.pesel] = account
     return account
   }

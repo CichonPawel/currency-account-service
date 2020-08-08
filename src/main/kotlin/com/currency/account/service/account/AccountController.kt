@@ -1,5 +1,6 @@
 package com.currency.account.service.account
 
+import io.swagger.annotations.ApiModelProperty
 import io.swagger.annotations.ApiOperation
 import io.swagger.annotations.ApiResponse
 import io.swagger.annotations.ApiResponses
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import java.math.BigDecimal
 
 
 @RestController
@@ -28,7 +30,9 @@ class AccountController(private val accountFacade: AccountFacade) {
 data class CreateAccountCommandDto(
         private val firstName: String,
         private val lastName: String,
-        private val pesel: String
+        private val pesel: String,
+        @ApiModelProperty(notes = "PLN")
+        private val balance: BigDecimal
 ) {
-  fun toCommand() = CreateAccountCommand(firstName,lastName, Pesel(pesel))
+  fun toCommand() = CreateAccountCommand(firstName,lastName, Pesel(pesel), balance)
 }
