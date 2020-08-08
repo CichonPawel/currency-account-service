@@ -1,5 +1,6 @@
 package com.currency.account.service.account
 
+import com.currency.account.service.pesel.Pesel
 import io.swagger.annotations.ApiModelProperty
 import io.swagger.annotations.ApiOperation
 import io.swagger.annotations.ApiResponse
@@ -35,12 +36,3 @@ class AccountController(private val accountFacade: AccountFacade) {
 }
 
 
-data class CreateAccountCommandDto(
-        private val firstName: String,
-        private val lastName: String,
-        private val pesel: String,
-        @ApiModelProperty(notes = "PLN")
-        private val balance: BigDecimal
-) {
-  fun toCommand() = CreateAccountCommand(firstName,lastName, Pesel(pesel), balance)
-}

@@ -3,6 +3,7 @@ package com.currency.account.service.account
 import com.currency.account.service.DynamicClock
 import com.currency.account.service.ResourceAlreadyExistException
 import com.currency.account.service.ValidationException
+import com.currency.account.service.account.pesel.Pesel
 import spock.lang.Specification
 import spock.lang.Unroll
 
