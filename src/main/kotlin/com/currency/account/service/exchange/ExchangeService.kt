@@ -2,10 +2,12 @@ package com.currency.account.service.exchange
 
 import com.currency.account.service.account.AccountFacade
 import com.currency.account.service.pesel.Pesel
+import mu.KotlinLogging
 import java.math.BigDecimal
 
 class ExchangeService(private val accountFacade: AccountFacade,
                       private val exchangeRateService: ExchangeRateService) {
+
   fun exchange(command: ExchangeCommand, pesel: Pesel) {
     val account = accountFacade.find(pesel)
     ExchangeValidator.valid(account, command)
