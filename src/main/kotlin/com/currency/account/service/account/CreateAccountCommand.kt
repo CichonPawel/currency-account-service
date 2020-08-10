@@ -10,7 +10,7 @@ data class CreateAccountCommand(
         val pesel: Pesel,
         val balance: BigDecimal
 ){
-  fun toAccount() = Account(firstName, lastName, pesel , setOf(SubAccount(Currency.PLN, balance)))
+  fun toAccount() = Account(firstName, lastName, pesel , setOf(SubAccount(Money(Currency.PLN, balance))))
 }
 
 data class CreateAccountCommandDto(

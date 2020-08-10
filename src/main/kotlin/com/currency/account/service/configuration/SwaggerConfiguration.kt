@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2
 @Configuration
 @EnableSwagger2
 @Profile("!test")
-private class SwaggerConfiguration(val buildProperties: BuildProperties) {
+private class SwaggerConfiguration() {
 
     @Bean
     fun api() = Docket(SWAGGER_2)
@@ -24,11 +24,11 @@ private class SwaggerConfiguration(val buildProperties: BuildProperties) {
             .apiInfo(apiInfo())!!
 
     private fun apiInfo() = ApiInfo(
-            "Empik REST API",
-            "Rest api for ${buildProperties.name}.",
-            buildProperties.version,
+            "REST API",
+            "Rest api for account service.",
+            "0.0.1",
             "",
-            Contact("Empik S.A.", "www.empik.com", ""),
+            Contact("Paweł", "Cicoń", ""),
             "",
             "",
             listOf()

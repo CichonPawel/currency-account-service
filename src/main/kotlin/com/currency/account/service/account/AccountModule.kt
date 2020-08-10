@@ -11,7 +11,11 @@ class AccountModule {
   fun accountFacade(accountRepository: AccountRepository, clock: Clock): AccountFacade {
     val accountCreator = AccountCreator(accountRepository, LegalAgeValidator(clock))
     val accountFinder = AccountFinder(accountRepository)
-    return AccountFacade(accountCreator, accountFinder)
+    val balanceChanger = BalanceChanger(accountRepository)
+    return AccountFacade(accountCreator, accountFinder, balanceChanger)
   }
+
+  @Bean
+  fun accountRepository(): AccountRepository = InMemoryAccountRepository()
 
 }

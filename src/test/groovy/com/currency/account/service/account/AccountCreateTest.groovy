@@ -3,7 +3,7 @@ package com.currency.account.service.account
 import com.currency.account.service.DynamicClock
 import com.currency.account.service.ResourceAlreadyExistException
 import com.currency.account.service.ValidationException
-import com.currency.account.service.account.pesel.Pesel
+import com.currency.account.service.pesel.Pesel
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -25,7 +25,7 @@ class AccountCreateTest extends Specification {
         account.firstName == FIRST_NAME
         account.lastName == LAST_NAME
         account.pesel == PESEL
-        account.subAccounts[0] == new SubAccount(Currency.PLN, BALANCE)
+        account.subAccounts[0] == new SubAccount(new Money(Currency.PLN, BALANCE))
     }
 
     def "trying to create an account with the same PESEL number should end with an error"() {
